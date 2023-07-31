@@ -1,0 +1,5 @@
+<% if @type == TYPE_DOT %>
+  <div class="bg-red-500 text-white rounded-full w-[0.4375rem] h-[0.4375rem]"></div>
+<% elsif @type == TYPE_NUMBER %>
+  <div class="bg-red-500 text-white rounded-full text-xs h-5 text-center leading-5 line text-[0.7rem] px-1.5 min-w-[20px]"><%= @rendered_count %></div>
+<% end %>

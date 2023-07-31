@@ -1,0 +1,12 @@
+<% flash.each do |type, message| %>
+  <% case message %>
+<% when String %>
+    <%= render(AlertComponent.new(message: sanitize(message), variant: type.to_sym)) %>
+  <% when Hash %>
+    <%= render(AlertComponent.new(message: message["message"], variant: type.to_sym)) do |component| %>
+      <%= component.action(variant: type.to_sym, **message["action"]["options"].symbolize_keys) do %>
+        <%= message["action"]["text"] %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,53 @@
+<%= content_for :page_title do %>
+  <%= @portal.name %>
+<% end %>
+
+<%= content_for :title do %>
+  <%= render PageHeadingComponent.new(title: @portal.name) %>
+<% end %>
+
+<div class="mt-8 mb-4 max-w-3xl mx-auto lg:max-w-7xl">
+  <div class="space-y-6">
+    <%= render "portal_info" %>
+
+    <%= render PageHeadingComponent.new(title: "Portal Analytics") do |h| %>
+      <% h.with_description do %>
+        Last Updated on <%= @portal.updated_at %>
+      <% end if @portal.updated_at.present? %>
+    <% end %>
+
+    <div class="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+      <%= render layout: "stat_box", locals: { title: "Login Details", data: @login_data } do %>
+        <div class="rounded h-12 w-12 flex items-center justify-center bg-red-50">
+          <%= heroicon "user", options: { class: "h-6 w-6 text-red-500" }, variant: :outline %>
+        </div>
+      <% end if @portal.last_login.present? or @portal.last_join.present? %>
+      <%= render layout: "stat_box", locals: { title: "Portal Content", data: @content_data } do %>
+        <div class="rounded h-12 w-12 flex items-center justify-center bg-orange-50">
+          <%= heroicon "film", options: { class: "h-6 w-6 text-orange-500" }, variant: :outline %>
+        </div>
+      <% end if @content_data.present? %>
+
+      <%= render layout: "stat_box", locals: { title: t('portal.registrations', count: @portal.total_learners || 0), count: @portal.total_learners, data: @portal.learners_data } do %>
+        <div class="rounded h-12 w-12 flex items-center justify-center bg-green-50">
+          <%= heroicon "user-group", options: { class: "h-6 w-6 text-green-500" }, variant: :outline %>
+        </div>
+      <% end if @portal.total_learners.present? or @portal.learners_data.present? %>
+      <%= render layout: "stat_box", locals: { title: t('portal.enrollments', count: @portal.total_enrollments || 0), count: @portal.total_enrollments, data: @portal.enrollments_data } do %>
+        <div class="rounded h-12 w-12 flex items-center justify-center bg-yellow-50">
+          <%= heroicon "book-open", options: { class: "h-6 w-6 text-yellow-700"}, variant: :outline %>
+        </div>
+      <% end if @portal.total_enrollments.present? or @portal.enrollments_data.present? %>
+      <%= render layout: "stat_box", locals: { title: t('portal.completions', count: @portal.total_completions || 0), count: @portal.total_completions, data: @portal.completions_data } do %>
+        <div class="rounded h-12 w-12 flex items-center justify-center bg-blue-50">
+          <%= heroicon "academic-cap", options: { class: "h-6 w-6 text-blue-700"}, variant: :outline %>
+        </div>
+      <% end if @portal.total_completions.present? or @portal.completions_data.present? %>
+      <%= render layout: "stat_box", locals: { title: t('portal.certificates', count: @portal.total_certificates || 0), count: @portal.total_certificates, data: @portal.certificates_data } do %>
+        <div class="rounded h-12 w-12 flex items-center justify-center bg-pink-100">
+          <%= heroicon "newspaper", options: { class: "h-6 w-6 text-pink-700"}, variant: :outline %>
+        </div>
+      <% end if @portal.total_certificates.present? or @portal.certificates_data.present? %>
+    </div>
+  </div>
+</div>

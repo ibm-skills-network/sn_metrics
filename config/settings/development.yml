@@ -1,0 +1,5 @@
+oauth:
+  ibmid:
+    authorize_url: "https://prepiam.ice.ibmcloud.com/oidc/endpoint/default/authorize"
+    token_url: "https://prepiam.ice.ibmcloud.com/oidc/endpoint/default/token"
+    user_info_url: "https://prepiam.ice.ibmcloud.com/oidc/endpoint/default/userinfo"

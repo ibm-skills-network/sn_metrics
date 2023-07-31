@@ -1,0 +1,59 @@
+<%= render_layout "application" do %>
+  <div class="relative flex flex-col items-center w-full h-full">
+    <div class="fixed top-0 left-0 -z-10">
+      <svg width="464" height="409" viewBox="0 0 464 409" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-6.87014 334.017C45.9637 294.245 101.5 276.006 143.066 278.917C184.632 281.829 282.979 305.342 343.835 376.104C404.69 446.866 439.05 384.615 448.623 344.644C460.981 295.392 476.97 170.174 442.062 63.3251C398.427 -70.2365 263.736 -119.733 157.532 -109.626C51.3274 -99.5176 -55.7193 -20.66 -102.564 133.59C-149.408 287.84 -61.6985 375.29 -6.87014 334.017Z" fill="#F2F2F2" />
+      </svg>
+    </div>
+
+    <div class="px-4 sm:px-8 md:px-32 pt-8 flex-1 w-full md:max-w-7xl self-center">
+      <% if flash.present? %>
+        <div class="-mt-8 mb-6">
+          <% flash.each do |type, message| %>
+            <% case message %>
+          <% when String %>
+              <%= render(AlertComponent.new(message: message, variant: type.to_sym)) %>
+            <% when Hash %>
+              <%= render(AlertComponent.new(message: message["message"], variant: type.to_sym)) do |component| %>
+                <%= component.action(variant: type.to_sym, **message["action"]["options"].symbolize_keys) do %>
+                  <%= message["action"]["text"] %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="flex flex-row items-center">
+        <div class="flex-1">
+          <img class="h-14 w-auto" src="/SN_lightMode_portalManager.svg" alt="Skills Network | Author Workbench">
+        </div>
+      </div>
+
+      <div class="pt-12 sm:pt-16 pb-8">
+        <div class="grid bg-white overflow-hidden shadow rounded-lg w-full md:w-[35rem]">
+          <div class="flex flex-col px-4 py-5 sm:p-6">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fixed hidden lg:block -z-10 bottom-56 right-32">
+      <%= inline_svg_tag "onboarding_developer.svg", class: "w-[30rem]" %>
+    </div>
+
+    <div class="shrink-0 flex justify-center items-center bottom-0 left-0 w-full sm:h-20 min-h-20 bg-white border border-gray-200 text-gray-600">
+      <div class="flex flex-col sm:flex-row items-center w-full max-w-7xl px-4 sm:px-8">
+        <div class="flex-1 py-4 text-center sm:text-left">
+          <span class="text-sm lg:text-base w-full">© IBM Skills Network | Portal Manager. All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+    <div class="fixed bottom-0 right-0 -z-10">
+      <svg width="272" height="246" viewBox="0 0 272 246" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M182.829 388.323C190.823 340.994 210.988 303.664 234.347 284.453C257.706 265.241 321.271 228.548 388.66 235.468C456.049 242.388 443.088 192.432 428.183 166.589C410.114 134.464 356.045 60.4929 284.32 21.6046C194.664 -27.0057 98.976 14.1329 48.0499 72.4662C-2.87623 130.8 -19.9335 225.785 32.3648 330.457C84.663 435.128 174.533 437.44 182.829 388.323Z" fill="#F2F2F2" />
+      </svg>
+    </div>
+  </div>
+<% end %>

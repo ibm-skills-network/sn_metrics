@@ -1,0 +1,29 @@
+<% count = count || "" %>
+
+<div class="flex flex-col shadow rounded-lg p-6 bg-white space-y-4">
+  <div class="flex space-x-4">
+    <%= yield %>
+    <div>
+      <h4 class="font-bold text-gray-900 text-xl"><%= number_with_delimiter count %></h4>
+      <h5 class="text-gray-600"><%= title %></h5>
+    </div>
+  </div>
+  <div class="flex flex-col grow">
+    <ul class="flex flex-col grow justify-evenly">
+      <% data.each do |item| %>
+        <li class="grid grid-cols-3">
+          <div class="col-xs-5 text-left" :class="<%= item["change"].present? %> ? '' : 'col-span-2'"><%= item["label"] %></div>
+          <div class="col-xs-3 text-right"><%= item["value"] %></div>
+          <% if item["change"].present? %>
+            <div class="col-xs-4 text-right">
+              <span class="text"><%= item["change"] %></span>
+              <%= heroicon "arrow-up", options: { "x-show":"#{item["up"] || false}", class: "flex h-6 w-6 text-green-500" } %>
+              <%= heroicon "arrow-down", options: { "x-show":"#{item["down"] || false}", class: "flex h-6 w-6 text-red-500" } %>
+              <%= heroicon "bars-2", options: { "x-show":"#{item["equal"] || false}", class: "flex h-6 w-6" } %>
+            </div>
+          <% end %>
+        </li>
+      <% end if data.present?%>
+    </ul>
+  </div>
+</div>

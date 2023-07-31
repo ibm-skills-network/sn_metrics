@@ -1,0 +1,7 @@
+<%= content_for :page_title do %>
+  <%= t(".page_title") %>
+<% end %>
+
+<%= content_for :title do %>
+  <%= render PageHeadingComponent.new(title: t(".title")) %>
+<% end %>

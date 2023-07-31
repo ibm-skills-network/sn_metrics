@@ -1,0 +1,40 @@
+<%= content_tag :section do %>
+  <div class="border border-gray-200 overflow-hidden sm:rounded-lg">
+    <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+      <dl class="grid grid-cols-3 gap-4">
+        <%= content_tag :div do %>
+          <dt class="text-lg font-medium text-gray-500">
+            Managers
+          </dt>
+          <%= content_tag :dd, class: "mt-1 text-sm text-gray-900", title: @text_label do %>
+            <div class="grid grid-cols-1 gap-1">
+              <% @portal.managers.each do |manager| %>
+                <div>
+                  <%= manager %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end if @portal.managers.present? %>
+
+        <%= content_tag :div do %>
+          <dt class="text-lg font-medium text-gray-500">
+            Slug
+          </dt>
+          <%= content_tag :dd, class: "mt-1 text-sm text-gray-900", title: @text_label do %>
+            <%= @portal.slug %>
+          <% end %>
+        <% end if @portal.slug.present? %>
+
+        <%= content_tag :div do %>
+          <dt class="text-lg font-medium text-gray-500">
+            Domain
+          </dt>
+          <%= content_tag :dd, class: "mt-1 text-sm text-gray-900", title: @text_label do %>
+            <%= link_to @portal.domain, @portal.domain, target: "_blank" %>
+          <% end %>
+        <% end if @portal.domain.present? %>
+      </dl>
+    </div>
+  </div>
+<% end %>

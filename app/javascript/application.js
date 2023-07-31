@@ -1,0 +1,11 @@
+// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+import "@hotwired/turbo"
+import "@hotwired/turbo-rails"
+import "alpine-turbo-drive-adapter"
+import "alpinejs"
+import "@alpinejs/persist"
+import "@alpinejs/collapse"
+import "@rails/actioncable/src"
+import "@rails/actioncable"
+import "@rails/actiontext"
+import "stimulus"

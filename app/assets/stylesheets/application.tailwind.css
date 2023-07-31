@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tooltip{
+  visibility: hidden;
+  position: absolute;
+  right: 0%;
+}
+
+.has-tooltip:hover .tooltip {
+  visibility: visible;
+  z-index: 100;
+}
+
+.has-tooltip {
+  position: relative;
+  border-bottom:1px dashed #000;
+}
+
+.tippy-box[data-theme~='app'] {
+  @apply bg-purple-600;
+  color: #FFFFFF;
+}
+.tippy-box[data-theme~='app'][data-placement^='top'] > .tippy-arrow::before {
+  @apply border-t-purple-600;
+}
+.tippy-box[data-theme~='app'][data-placement^='bottom'] > .tippy-arrow::before {
+  @apply border-b-purple-600;
+}
+.tippy-box[data-theme~='app'][data-placement^='left'] > .tippy-arrow::before {
+  @apply border-l-purple-600;
+}
+.tippy-box[data-theme~='app'][data-placement^='right'] > .tippy-arrow::before {
+  @apply border-r-purple-600;
+}

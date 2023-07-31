@@ -1,0 +1,7 @@
+oauth:
+  ibmid:
+    client_id: ""
+    client_secret: ""
+    authorize_url: ""
+    token_url: ""
+    user_info_url: ""

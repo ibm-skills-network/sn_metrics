@@ -1,0 +1,38 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+
+inherit_gem:
+  rubocop-github:
+    - config/default_edge.yml
+    - config/rails_edge.yml
+
+AllCops:
+  NewCops: disable
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+    - 'app/models/setting.rb'
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Rails/EnumHash:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+GitHub/RailsControllerRenderPathsExist:
+  Enabled: false
+
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+
+Lint/MissingSuper:
+  Exclude:
+    - 'app/components/**/*'
+    - 'app/services/**/*'

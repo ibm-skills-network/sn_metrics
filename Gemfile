@@ -64,7 +64,7 @@ group :development do
   gem "spring", "~> 4.1.0"
 
   # Rubocop github flavour
-  gem "rubocop-github", "~> 0.17.0"
+  gem "rubocop-github", "~> 0.20.0"
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false

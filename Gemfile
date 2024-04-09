@@ -70,7 +70,7 @@ group :development do
   gem "rubocop-rspec", require: false
 
   # ERB linting
-  gem "erb_lint", "~> 0.3.1"
+  gem "erb_lint", "~> 0.5.0"
 end
 
 group :test do

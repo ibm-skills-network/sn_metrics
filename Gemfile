@@ -61,7 +61,7 @@ group :development do
   gem "rack-mini-profiler", "~> 3.0.0"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  gem "spring", "~> 4.1.0"
+  gem "spring", "~> 4.2.0"
 
   # Rubocop github flavour
   gem "rubocop-github", "~> 0.17.0"

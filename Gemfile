@@ -14,7 +14,7 @@ gem "simple_form", "~> 5"
 gem "sprockets-rails", "~> 3"
 gem "tailwindcss-rails", "~> 2"
 gem "turbo-rails", "~> 1"
-gem "view_component", "~> 2"
+gem "view_component", "~> 3"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4"
